@@ -11,17 +11,17 @@ httpserver = HttpServer()
 
 
 
-class ProcessTheClient(threading.Thread):
-	def __init__(self, connection, address):
-		self.connection = connection
-		self.address = address
-		threading.Thread.__init__(self)
-        
-# class ProcessTheClient(multiprocessing.Process):
+# class ProcessTheClient(threading.Thread):
 # 	def __init__(self, connection, address):
 # 		self.connection = connection
 # 		self.address = address
-# 		multiprocessing.Process.__init__(self)
+# 		threading.Thread.__init__(self)
+        
+class ProcessTheClient(multiprocessing.Process):
+	def __init__(self, connection, address):
+		self.connection = connection
+		self.address = address
+		multiprocessing.Process.__init__(self)
 
 	def run(self):
 		rcv=""
@@ -79,4 +79,5 @@ def main():
 
 if __name__=="__main__":
 	main()
+
 
